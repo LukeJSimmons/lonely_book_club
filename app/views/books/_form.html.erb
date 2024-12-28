@@ -1,0 +1,22 @@
+<%= form_with model: book do |form| %>
+    <% if book.errors.any? %>
+        <% book.errors.each do |error| %>
+            <h2><%= error.full_message %></h2>
+        <% end %>
+    <% end %>
+    <p>
+        <%= form.label :title %><br>
+        <%= form.text_field :title %>
+    </p>
+    <p>
+        <%= form.label :genre %><br>
+        <%= form.text_field :genre %>
+    </p>
+    <p>
+        <%= form.label :pages %><br>
+        <%= form.number_field :pages %>
+    </p>
+    <p>
+        <%= form.submit %>
+    </p>
+<% end %>
