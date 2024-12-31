@@ -3,6 +3,9 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
+
+    @q = Book.ransack(params[:q])
+    @books = @q.result(distinct: true)
   end
 
   def show
@@ -24,6 +27,13 @@ class BooksController < ApplicationController
     end
   end
 
+  def destroy
+    @book = Book.find(params[:id])
+    @book.destroy
+
+    redirect_to root_path, status: :see_other
+  end
+
   private
 
     def require_login
@@ -34,6 +44,6 @@ class BooksController < ApplicationController
     end
 
     def book_params
-      params.require(:book).permit(:title, :genre, :pages, :user_id)
+      params.require(:book).permit(:title, :genre, :pages, :total_chapters, :user_id)
     end
 end

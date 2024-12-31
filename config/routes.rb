@@ -8,7 +8,12 @@ Rails.application.routes.draw do
 
   root to: "books#index"
 
-  resources :books
+  resources :books do
+    resources :reviews, only: [:create, :edit, :update, :destroy]
+    resources :chapters, only: [:create, :edit, :update] do
+      resource :note, only: [:create, :edit, :update]
+    end
+  end
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest

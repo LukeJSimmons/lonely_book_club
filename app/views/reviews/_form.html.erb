@@ -1,0 +1,17 @@
+<%= form_with model: [ book, book.build_review ] do |form| %>
+    <% if form.object.errors.any? %>
+        <% form.object.errors.each do |error| %>
+            <h2><%= error.full_message %></h2>
+        <% end %>
+    <% end %>
+    <p>
+        <%= form.label :rating %><br>
+        <%= form.number_field :rating %>
+    </p>
+    <p>
+        <%= form.text_area :body %>
+    </p>
+    <p>
+        <%= form.submit %>
+    </p>
+<% end %>

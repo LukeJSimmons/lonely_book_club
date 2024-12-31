@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_28_155551) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_31_132449) do
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.string "genre"
@@ -18,7 +18,34 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_28_155551) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "total_chapters"
     t.index ["user_id"], name: "index_books_on_user_id"
+  end
+
+  create_table "chapters", force: :cascade do |t|
+    t.integer "book_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "title"
+    t.integer "index"
+    t.index ["book_id"], name: "index_chapters_on_book_id"
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.text "content"
+    t.integer "chapter_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chapter_id"], name: "index_notes_on_chapter_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.text "body"
+    t.integer "book_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_reviews_on_book_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -34,4 +61,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_28_155551) do
   end
 
   add_foreign_key "books", "users"
+  add_foreign_key "chapters", "books"
+  add_foreign_key "notes", "chapters"
+  add_foreign_key "reviews", "books"
 end

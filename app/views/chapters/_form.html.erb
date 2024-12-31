@@ -1,0 +1,19 @@
+<%= form_with model: [ book, book.chapters.build ] do |form| %>
+    <% if form.object.errors.any? %>
+        <% form.object.errors.each do |error| %>
+            <h2><%= error.full_message %></h2>
+        <% end %>
+    <% end %>
+    <h2>Add Chapter</h2>
+    <p>
+        <%= form.label :index, "Number" %><br>
+        <%= form.number_field :index %>
+    </p>
+    <p>
+        <%= form.label :title %><br>
+        <%= form.text_field :title %>
+    </p>
+    <p>
+        <%= form.submit %>
+    </p>
+<% end %>

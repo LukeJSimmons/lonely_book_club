@@ -1,0 +1,13 @@
+<%= form_with model: [ chapter, chapter.note || chapter.build_note ], url: book_chapter_note_path(chapter.book_id, chapter.id) do |form| %>
+    <% if form.object.errors.any? %>
+        <% form.object.errors.each do |error| %>
+            <h2><%= error.full_message %></h2>
+        <% end %>
+    <% end %>
+    <p>
+        <%= form.text_area :content %>
+    </p>
+    <p>
+        <%= form.submit %>
+    </p>
+<% end %>
