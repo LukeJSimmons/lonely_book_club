@@ -8,7 +8,8 @@ class NotesController < ApplicationController
   end
 
   def update
-    @note = Note.find(params[:id])
+    @chapter = Chapter.find(params[:chapter_id])
+    @note = Note.find(@chapter.note.id)
     
     unless @note.update(note_params)
       redirect_to root_path
