@@ -1,16 +1,20 @@
-<h1>Books</h1>
+<div class="homepage">
+<h1>Lonely Book Club</h1>
 <%= search_form_for @q do |f| %>
 
   <%= f.search_field :title_cont %>
 
   <%= f.submit %>
-<% end %>
-<% @books.each do |book| %>
-    <h2><%= link_to book.title, book %></h2>
-    <h3><%= book.genre %></h3>
-<% end %>
-<%= link_to "Add Book", new_book_path, class: "btn" %><br><br>
+<% end %><br>
+<div class="books">
+  <% @books.each do |book| %>
+      <h2><%= link_to book.title, book %></h2>
+  <% end %><br>
+</div>
+<%= link_to "Add Book", new_book_path %><br><br>
 <% if user_signed_in? %>
-    <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %><br>
+    <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "danger" %><br>
     <%= link_to "Edit Profile", edit_user_registration_path, class: "btn" %><br>
 <% end %>
+<%= link_to "Authors", authors_path %>
+</div>

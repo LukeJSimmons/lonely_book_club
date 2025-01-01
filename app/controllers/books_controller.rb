@@ -14,11 +14,27 @@ class BooksController < ApplicationController
 
   def new
     @book = Book.new
+    @book.build_author
+    @book.build_genre
   end
 
   def create
-    @book = Book.create(book_params)
+    author = if book_params[:author_id].present?
+                Author.find(book_params[:author_id])
+              elsif book_params[:author_attributes][:name].present?
+                Author.find_or_initialize_by(name: book_params[:author_attributes][:name])
+              end
+
+    genre = if book_params[:genre_id].present?
+              Genre.find(book_params[:genre_id])
+            elsif book_params[:genre_attributes][:name].present?
+              Genre.find_or_initialize_by(name: book_params[:genre_attributes][:name])
+            end
+
+    @book = Book.new(book_params)
     @book.user_id = current_user.id
+    @book.author = author
+    @book.genre = genre
 
     if @book.save
       redirect_to @book
@@ -44,6 +60,6 @@ class BooksController < ApplicationController
     end
 
     def book_params
-      params.require(:book).permit(:title, :genre, :pages, :total_chapters, :user_id)
+      params.require(:book).permit(:title, :genre, :pages, :total_chapters, :user_id, :author_id, :genre_id, author_attributes: [:name], genre_attributes: [:name])
     end
 end

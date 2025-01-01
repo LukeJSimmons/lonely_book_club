@@ -1,4 +1,4 @@
-<%= form_with model: [ book, book.build_review ] do |form| %>
+<%= form_with model: [ book, book.review || book.build_review ] do |form| %>
     <% if form.object.errors.any? %>
         <% form.object.errors.each do |error| %>
             <h2><%= error.full_message %></h2>
@@ -6,10 +6,10 @@
     <% end %>
     <p>
         <%= form.label :rating %><br>
-        <%= form.number_field :rating %>
+        <%= form.number_field :rating, placeholder: "?/5" %>
     </p>
     <p>
-        <%= form.text_area :body %>
+        <%= form.text_area :body, placeholder: "this book sucks" %>
     </p>
     <p>
         <%= form.submit %>

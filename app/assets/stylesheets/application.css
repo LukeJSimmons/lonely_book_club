@@ -8,3 +8,67 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+html {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: rgb(12, 12, 12);
+    color: aliceblue;
+}
+
+a {
+    color: cornflowerblue;
+    text-decoration: none;
+}
+
+button, input[type="submit"] {
+    background-color: cornflowerblue;
+    color: aliceblue;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+}
+
+input, textarea {
+    background-color: rgb(12, 12, 12);
+    color: aliceblue;
+    border: 0.1rem, rgba(240, 248, 255, 0.25), solid;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+}
+
+select {
+    background-color: rgb(12, 12, 12);
+    color: aliceblue;
+    border: 0.1rem, rgba(240, 248, 255, 0.25), solid;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+}
+
+label {
+    font-weight: bold;
+}
+
+h1 {
+    font-style: italic;
+}
+
+.homepage {
+    text-align: center;
+}
+
+.bookpage, .authorspage {
+    margin-left: 1rem;
+}
+
+.author {
+    display: flex;
+    align-items: center;
+}
+
+.author h2 {
+    margin-right: 1rem;
+}
+
+.danger {
+    background-color: brown;
+}

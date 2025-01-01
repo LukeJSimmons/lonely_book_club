@@ -1,0 +1,9 @@
+<div class="authorspage">
+    <h1>Authors</h1>
+    <% @authors.each do |author| %>
+        <div class="author">
+            <h2><%= author.name %></h2>
+            <%= button_to "Delete Author", author_path(author.id), method: :delete, class: "danger", data: { confirm: "Are you sure? This will delete all books by this author.", turbo_confirm: "Are you sure? This will delete all books by this author." } %>
+        </div>
+    <% end %>
+</div>

@@ -1,6 +1,12 @@
 class Book < ApplicationRecord
   validates :title, presence: true, uniqueness: true
+
   belongs_to :user
+  belongs_to :author
+  accepts_nested_attributes_for :author
+  belongs_to :genre
+  accepts_nested_attributes_for :genre
+
   has_one :review, dependent: :destroy
   has_many :chapters, dependent: :destroy
 

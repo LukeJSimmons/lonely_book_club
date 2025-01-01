@@ -10,15 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_31_132449) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_01_133044) do
+  create_table "authors", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "books", force: :cascade do |t|
     t.string "title"
-    t.string "genre"
     t.integer "pages"
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "total_chapters"
+    t.integer "genre_id"
+    t.integer "author_id"
+    t.index ["author_id"], name: "index_books_on_author_id"
+    t.index ["genre_id"], name: "index_books_on_genre_id"
     t.index ["user_id"], name: "index_books_on_user_id"
   end
 
@@ -29,6 +38,12 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_31_132449) do
     t.string "title"
     t.integer "index"
     t.index ["book_id"], name: "index_chapters_on_book_id"
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "notes", force: :cascade do |t|
@@ -60,6 +75,8 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_31_132449) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "books", "authors"
+  add_foreign_key "books", "genres"
   add_foreign_key "books", "users"
   add_foreign_key "chapters", "books"
   add_foreign_key "notes", "chapters"

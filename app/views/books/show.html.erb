@@ -1,18 +1,16 @@
+<div class="bookpage">
 <h1><%= @book.title %></h1>
-<h2><%= @book.genre %></h2>
-<h2><%= @book.pages %>pgs</h2>
-<h2><%= @book.total_chapters %> Chapters</h2>
-<%= button_to "Delete Book", book_path(@book.id), method: :delete %>
+<h3>Author: <%= @book.author.name %></h3>
+<h3>Genre: <%= @book.genre.name %></h3>
+<h3><%= @book.pages %> Pages</h3>
+<h3><%= @book.total_chapters %> Chapters</h3>
+<%= button_to "Delete Book", book_path(@book.id), method: :delete, class: "danger" %><br>
+<%= link_to "Back to Books", root_path %><br><br>
 
 <h1>Review</h1>
-<% if @book.review %>
-    <%= render @book.review %>
-    <%= button_to "Delete Review", book_review_path(@book.id, @book.review.id), method: :delete %>
-<% else %>
-    <h2>Write a Review</h2>
-    <%= render "reviews/form", book: @book %>
-<% end %>
+<h2>Write a Review</h2>
+<%= render "reviews/form", book: @book %><br>
 
-<%= link_to "Back to Books", root_path %>
-
+<h1>Chapters</h1>
 <%= render @book.chapters %>
+</div>

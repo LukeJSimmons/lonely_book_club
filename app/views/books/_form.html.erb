@@ -6,21 +6,32 @@
     <% end %>
     <p>
         <%= form.label :title %><br>
-        <%= form.text_field :title %>
+        <%= form.text_field :title, placeholder: "dracula" %>
     </p>
-    <p>
-        <%= form.label :genre %><br>
-        <%= form.text_field :genre %>
-    </p>
+    <%= form.fields_for :author do |author_form| %>
+        <p>
+            <%= author_form.label :name, "Author" %><br>
+            <%= form.collection_select :author_id, Author.all, :id, :name, include_blank: "Select an Author" %><br>
+            <%= author_form.text_field :name, placeholder: "or create new author" %>
+        </p>
+    <% end %>
+    <%= form.fields_for :genre do |genre_form| %>
+        <p>
+            <%= genre_form.label :name, "Genre" %><br>
+            <%= form.collection_select :genre_id, Genre.all, :id, :name, include_blank: "Select a Genre" %><br>
+            <%= genre_form.text_field :name, placeholder: "or create new genre" %>
+        </p>
+    <% end %>
     <p>
         <%= form.label :pages %><br>
-        <%= form.number_field :pages %>
+        <%= form.number_field :pages, placeholder: "200" %>
     </p>
     <p>
-        <%= form.label :total_chapters %><br>
-        <%= form.number_field :total_chapters %>
+        <%= form.label :total_chapters, "Chapters" %><br>
+        <%= form.number_field :total_chapters, placeholder: "12" %>
     </p>
     <p>
         <%= form.submit %>
     </p>
-<% end %>
+<% end %><br>
+<%= link_to "Back to Books", root_path %>

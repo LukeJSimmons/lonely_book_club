@@ -3,7 +3,7 @@ class NotesController < ApplicationController
     @chapter = Chapter.find(params[:chapter_id])
     @note = @chapter.build_note(note_params)
     unless @note.save
-      redirect_to root_path
+      redirect_to book_path(@chapter.book_id)
     end
   end
 
@@ -12,17 +12,16 @@ class NotesController < ApplicationController
     @note = Note.find(@chapter.note.id)
     
     unless @note.update(note_params)
-      redirect_to root_path
+      redirect_to book_path(@chapter.book_id)
     end
   end
 
   def destroy
     @chapter = Chapter.find(params[:chapter_id])
-    @book = Book.find(@chapter.book_id)
     @note = Note.find(params[:id])
     @note.destroy
 
-    redirect_to @book, status: :see_other
+    redirect_to book_path(@chapter.book_id), status: :see_other
   end
 
   private
