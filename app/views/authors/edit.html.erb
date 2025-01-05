@@ -1,0 +1,7 @@
+<%= form_with model: @author do |form| %>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %><br><br>
+    <%= form.label :bio %><br>
+    <%= form.text_area :bio %><br><br>
+    <%= button_to "Update", author_path(@author.id), method: :put %><br><br>
+<% end %>

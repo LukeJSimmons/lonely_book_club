@@ -15,8 +15,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :authors, only: [:index, :destroy]
-
+  resources :authors, only: [:index, :show, :edit, :update, :destroy]
+  resources :genres, only: [:index, :show, :edit, :update, :destroy]
+  
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker

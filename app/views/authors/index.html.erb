@@ -2,8 +2,9 @@
     <h1>Authors</h1>
     <% @authors.each do |author| %>
         <div class="author">
-            <h2><%= author.name %></h2>
-            <%= button_to "Delete Author", author_path(author.id), method: :delete, class: "danger", data: { confirm: "Are you sure? This will delete all books by this author.", turbo_confirm: "Are you sure? This will delete all books by this author." } %>
+            <h2><%= link_to author.name, author %></h2>
         </div>
     <% end %>
 </div>
+
+<%= link_to "Back to Books", root_path %>

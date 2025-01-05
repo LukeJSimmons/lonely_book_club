@@ -1,0 +1,5 @@
+<%= form_with model: @genre do |form| %>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %><br><br>
+    <%= button_to "Update", genre_path(@genre.id), method: :put %><br><br>
+<% end %>

@@ -1,0 +1,7 @@
+<h1><%= @genre.name %></h1>
+<%= link_to "Edit", edit_genre_path(@genre.id) %><br><br>
+
+<%= button_to "Delete", genre_path(@genre.id), method: :delete, class: "danger", 
+data: { confirm: "Are you sure? This will delete all books in this genre.", turbo_confirm: "Are you sure? This will delete all books in this genre." } %><br>
+
+<%= link_to "Back to Genres", genres_path %>

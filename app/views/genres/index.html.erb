@@ -1,0 +1,10 @@
+<div class="genrespage">
+    <h1>Genres</h1>
+    <% @genres.each do |genre| %>
+        <div class="genre">
+            <h2><%= link_to genre.name, genre %></h2>
+        </div>
+    <% end %>
+</div>
+
+<%= link_to "Back to Books", root_path %>

@@ -1,0 +1,8 @@
+<h1><%= @author.name %></h1>
+<p><%= @author.bio || "press edit to write a bio" %></p>
+<%= link_to "Edit", edit_author_path(@author.id) %><br><br>
+
+<%= button_to "Delete", author_path(@author.id), method: :delete, class: "danger", 
+data: { confirm: "Are you sure? This will delete all books by this author.", turbo_confirm: "Are you sure? This will delete all books by this author." } %><br>
+
+<%= link_to "Back to Authors", authors_path %>
