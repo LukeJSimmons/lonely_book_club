@@ -1,0 +1,8 @@
+{
+  "name": "lonely_book_club",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/LukeJSimmons/lonely_book_club.git",
+  "author": "LukeJSimmons <lucasjsimmons@yahoo.com>",
+  "license": "MIT"
+}
