@@ -15,7 +15,7 @@ class Book < ApplicationRecord
   private
 
     def self.ransackable_attributes(auth_object = nil)
-      ["genre","title"]
+      [ "genre", "title" ]
     end
 
     def create_chapters

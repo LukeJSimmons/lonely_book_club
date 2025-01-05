@@ -17,10 +17,10 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
-gem 'devise', '~> 4.9', '>= 4.9.4'
-gem 'ransack', '~> 4.2', '>= 4.2.1'
-gem 'bootstrap', '~> 5.3', '>= 5.3.3'
-gem 'cssbundling-rails', '~> 1.4', '>= 1.4.1'
+gem "devise", "~> 4.9", ">= 4.9.4"
+gem "ransack", "~> 4.2", ">= 4.2.1"
+gem "bootstrap", "~> 5.3", ">= 5.3.3"
+gem "cssbundling-rails", "~> 1.4", ">= 1.4.1"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"

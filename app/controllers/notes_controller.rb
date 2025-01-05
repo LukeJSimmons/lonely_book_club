@@ -10,7 +10,7 @@ class NotesController < ApplicationController
   def update
     @chapter = Chapter.find(params[:chapter_id])
     @note = Note.find(@chapter.note.id)
-    
+
     unless @note.update(note_params)
       redirect_to book_path(@chapter.book_id)
     end
