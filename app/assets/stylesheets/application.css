@@ -22,6 +22,11 @@ html {
     color: var(--primary-color);
 }
 
+div {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
 a {
     color: var(--accent-color);
     text-decoration: none;
